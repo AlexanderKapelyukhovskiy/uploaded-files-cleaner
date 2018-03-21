@@ -15,10 +15,13 @@ Tool for monitoring and removing newly added files
 ```
 ...
 "install": "node install.js install ./upload 5 ./service-log.txt",
+...
 ```
 
 ```
+...
 "install": "node install.js install {folderToWatch} {deleteNewFileAfterSec} {logPath}",
+...
 ```
 
 * `./upload` - name of folder to watch is `upload`
