@@ -8,7 +8,7 @@ Tool for monitoring and removing newly added files
 * yarn run install
 
 ## unstall service Uploaded Files Cleaner
-* node run uninstall
+* yarn run uninstall
 
 ## for change default service configuration 
 * edit install.js inide 
