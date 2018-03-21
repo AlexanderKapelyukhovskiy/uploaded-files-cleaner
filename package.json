@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "install": "node install.js install",
+    "uninstall": "node install.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
