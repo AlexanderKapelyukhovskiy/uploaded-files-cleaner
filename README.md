@@ -11,7 +11,7 @@ Tool for monitoring and removing newly added files
 * yarn run uninstall
 
 ## for change default service configuration 
-* edit install.js inide 
+* edit install.js inside 
 ```
 env: [{
     folder: './',
