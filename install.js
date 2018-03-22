@@ -13,13 +13,13 @@ const clearFolderOnInit = process.argv[6] || false
 const action = process.argv[2]
 
 const log = msg => {
-  console.log(msg)
+  console.log(msg) //eslint-disable-line no-console
   logger.info(msg)
 }
 
 if (runInstall) {
   log(
-    `Run install with ${action} for ${folderToWatch} and ${deleteNewFileAfterSec} sec interval.`);
+    `Run install with ${action} for ${folderToWatch} and ${deleteNewFileAfterSec} sec interval.`)
 }
 
 const svc = new Service({

@@ -8,7 +8,7 @@ const logPath = process.env['logPath'] || process.argv[4] || './log.txt'
 const clearFolderOnInit = process.env['clearFolderOnInit'] || process.argv[5] || false
 
 const log = msg => {
-  console.log(msg)
+  console.log(msg) //eslint-disable-line no-console
   fs.appendFileSync(logPath, `${new Date()} - ${msg}\n`)
 }
 
@@ -20,7 +20,7 @@ const clearFolder = directory => {
     log('readdir...')
 
     if (err) {
-      console.log('Error3: ' + err)
+      console.log('Error3: ' + err) //eslint-disable-line no-console
       throw err
     }
 
@@ -30,7 +30,7 @@ const clearFolder = directory => {
       fs.unlink(f, err => {
         log(`${f} was removed`)
         if (err) {
-          console.log('Error4: ' + err)
+          console.log('Error4: ' + err) //eslint-disable-line no-console
           throw err
         }
       })
