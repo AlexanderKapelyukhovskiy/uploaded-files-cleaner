@@ -14,19 +14,20 @@ Tool for monitoring and removing newly added files
 * edit `install` script in package.json or run it directly in console
 ```
 ...
-"install": "node install.js install ./upload 5 ./service-log.txt",
+"install": "node install.js install ./upload 5 ./service-log.txt false",
 ...
 ```
 
 ```
 ...
-"install": "node install.js install {folderToWatch} {deleteNewFileAfterSec} {logPath}",
+"install": "node install.js install {folderToWatch} {deleteNewFileAfterSec} {logPath} {clearFolderOnInit}",
 ...
 ```
 
 * `./upload` - name of folder to watch is `upload`
 * `5` - delete new file after `5` sec 
 * `./service-log.txt` - log path is `./service-log.txt`
+* `false` - do not clear folder on Init 
 
 ## monitoring logs 
 * after default installation logs can be found in `./service-log.txt`
