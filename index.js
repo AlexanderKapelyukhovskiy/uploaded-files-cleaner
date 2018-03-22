@@ -1,18 +1,50 @@
 var watch = require('node-watch');
 var fs = require('fs');
+var path = require('path');
 
 const folderToWatch = process.env['folderToWatch'] || process.argv[2];
 const deleteNewFileAfterSec = process.env['deleteNewFileAfterSec'] || process.argv[3];
 const logPath = process.env['logPath'] || process.argv[4] || './log.txt';
+const clearFolderOnInit = process.env['clearFolderOnInit'] || process.argv[5] || false;
 
 const log = msg => {
     console.log(msg);
     fs.appendFileSync(logPath, `${new Date()} - ${msg}\n`);
 };
 
-log(`Starting ${folderToWatch} ${deleteNewFileAfterSec} ...`);
+const clearFolder = directory => {
+    log('clearFolder...');
+
+    fs.readdir(directory, (err, files) => {
+        log('readdir...');
+        
+        if (err) {
+            console.log('Error3: ' + err);
+            throw err;
+        }
+
+        for (const file of files) {
+            const f = path.join(directory, file);
+            log(`${f} is removing`);
+            fs.unlink(f, err => {
+                log(`${f} was removed`);
+                if (err) {
+                    console.log('Error4: ' + err);
+                    throw err;
+                }
+            });
+        }
+    });
+};
+
+log(`Starting ${folderToWatch} ${deleteNewFileAfterSec} ${clearFolderOnInit}...`);
 
 try {
+    if (clearFolderOnInit == 'true') {
+        log('Clearing Folder OnInit...');
+        clearFolder(folderToWatch);
+    }
+
     watch(folderToWatch, { recursive: true }, function(evt, name) {
         try {
             log(`${name} changed.`);

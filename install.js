@@ -5,10 +5,11 @@ const serviceName = 'Uploaded Files Cleaner';
 
 var logger = new EventLogger(serviceName);
 
-const runInstall = process.argv.length == 6;
+const runInstall = process.argv.length == 7;
 const folderToWatch =  runInstall ? process.argv[3] : '';
 const deleteNewFileAfterSec = runInstall ? process.argv[4] : 0;
-const logPath = process.env['logPath'] || process.argv[5] || '';
+const logPath = process.argv[5] || '';
+const clearFolderOnInit = process.argv[6] || false;
 const action = process.argv[2];
 
 const log = msg => {
@@ -34,6 +35,9 @@ var svc = new Service({
   }, {
     name: 'logPath',
     value: logPath
+  }, {
+    name: 'clearFolderOnInit',
+    value: clearFolderOnInit
   }]
 });
 
